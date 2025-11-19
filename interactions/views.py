@@ -8,6 +8,7 @@ from .serializers import (
     InteractionSerializer, ViewHistorySerializer, 
     MatchSerializer, DateInvitationSerializer, ContactExchangeSerializer
 )
+from users.serializers import UserSerializer
 from users.models import User
 
 

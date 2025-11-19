@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     # Local apps
     'users',
     'interactions',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -64,11 +65,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='dating_app'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default='password'),
-        'HOST': config('DB_HOST', default='db'),
-        'PORT': config('DB_PORT', default='5432'),
+        'NAME': 'postgres',  
+        'USER': 'postgres',
+        'PASSWORD': 'password',  
+        'HOST': 'localhost',   
+        'PORT': '5432',
     }
 }
 
@@ -111,6 +112,13 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Dating App API',
+    'DESCRIPTION': 'API для веб-платформы знакомств',
+    'VERSION': '1.0.0',
 }
 
 SIMPLE_JWT = {
